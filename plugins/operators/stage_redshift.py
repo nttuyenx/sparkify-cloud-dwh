@@ -29,11 +29,11 @@ class StageToRedshiftOperator(BaseOperator):
 
         super(StageToRedshiftOperator, self).__init__(*args, **kwargs)
         # Map params here
-        self.redshift_conn_id = redshift_conn_id,
-        self.aws_credentials_id = aws_credentials_id,
-        self.table = table,
-        self.s3_bucket = s3_bucket,
-        self.s3_key = s3_key,
+        self.redshift_conn_id = redshift_conn_id
+        self.aws_credentials_id = aws_credentials_id
+        self.table = table
+        self.s3_bucket = s3_bucket
+        self.s3_key = s3_key
         self.jsonpath = jsonpath
 
     def execute(self, context):
