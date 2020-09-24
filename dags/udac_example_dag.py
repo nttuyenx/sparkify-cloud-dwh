@@ -26,7 +26,7 @@ dag = DAG(
     schedule_interval='0 * * * *'
 )
 
-start_operator = DummyOperator(task_id='Begin_execution',  dag=dag)
+start_operator = DummyOperator(task_id='Begin_execution', dag=dag)
 
 stage_events_to_redshift = StageToRedshiftOperator(
     task_id="Stage_events",
@@ -92,7 +92,9 @@ load_time_dimension_table = LoadDimensionOperator(
 
 run_quality_checks = DataQualityOperator(
     task_id='Run_data_quality_checks',
-    dag=dag
+    dag=dag,
+    redshift_conn_id="redshift",
+    table=["songplays", "artists", "songs", "users", "time"]
 )
 
 end_operator = DummyOperator(task_id='Stop_execution',  dag=dag)
