@@ -1,3 +1,4 @@
+import os
 from airflow.hooks.postgres_hook import PostgresHook
 from airflow.models import BaseOperator
 from airflow.utils.decorators import apply_defaults
@@ -19,6 +20,8 @@ class CreateTableOperator(BaseOperator):
         redshift = PostgresHook(postgres_conn_id=self.redshift_conn_id)
 
         self.log.info("Creating tables in Redshift")
-        queries = open('~/airflow/create_tables.sql', 'r').read()
+        os.chdir("../../")
+        file_path = "/".join([os.getcwd(), "create_tables.sql"])
+        queries = open(file_path, "r").read()
         redshift.run(queries)
         self.log.info("Tables created!")
