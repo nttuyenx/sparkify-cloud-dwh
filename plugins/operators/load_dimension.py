@@ -28,7 +28,7 @@ class LoadDimensionOperator(BaseOperator):
         redshift.run("DELETE FROM {}".format(self.table))
 
         self.log.info(
-            "Inserting data into dimension table '{}'".format(self.table)
+            "Inserting data into dimension table {}".format(self.table)
         )
         formated_sql = """
             INSERT INTO {}
