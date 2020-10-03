@@ -17,18 +17,18 @@ This includes one fact table - `songplays` referencing four dimension tables - `
 ### Fact table
 
 1. **songplays** - records in log data associated with song plays i.e. records with page `NextSong` <br>
-    - columns: *songplay_id, start_time, user_id, level, song_id, artist_id, session_id, location, user_agent*
+    - columns: *playid, start_time, userid, "level", songid, artistid, sessionid, location, user_agent*
 
 ### Dimension Tables
 
 2. **users** - users in the app <br>
-    - columns: *user_id, first_name, last_name, gender, level*
+    - columns: *userid, first_name, last_name, gender, "level"*
 3. **songs** - songs in music database <br>
-    - columns: *song_id, title, artist_id, year, duration*
+    - columns: *songid, title, artistid, "year", duration*
 4. **artists** - artists in music database
-    - columns: *artist_id, name, location, latitude, longitude*
+    - columns: *artistid, name, location, latitude, longitude*
 5. **time** - timestamps of records in songplays broken down into specific units
-    - columns: *start_time, hour, day, week, month, year, weekday*
+    - columns: *start_time, "hour", "day", week, "month", "year", weekday*
 
 ## Data warehouse ETL pipelines with Airflow
 
