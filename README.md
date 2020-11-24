@@ -1,4 +1,4 @@
-# Sparkify Data Pipelines with Airflow
+# Sparkify Cloud Data Warehouse with Airflow
 
 A music streaming company, Sparkify, has decided that it is time to introduce more automation and monitoring to their data warehouse ETL pipelines with Apache Airflow. Their data resides in Amazon S3, in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app and needs to be processed in Sparkify's data warehouse in Amazon Redshift.
 
@@ -19,7 +19,7 @@ This includes one fact table - `songplays` referencing four dimension tables - `
 1. **songplays** - records in log data associated with song plays i.e. records with page `NextSong` <br>
     - columns: *playid, start_time, userid, "level", songid, artistid, sessionid, location, user_agent*
 
-### Dimension Tables
+### Dimension tables
 
 2. **users** - users in the app <br>
     - columns: *userid, first_name, last_name, gender, "level"*
@@ -30,12 +30,12 @@ This includes one fact table - `songplays` referencing four dimension tables - `
 5. **time** - timestamps of records in songplays broken down into specific units
     - columns: *start_time, "hour", "day", week, "month", "year", weekday*
 
-## Data warehouse ETL pipelines with Airflow
+## Data pipelines with Airflow
 
 ### Directed Acyclic Graph (DAG)
 
 The workflow of the data pipelines is defined in `dags/sparkify_etl_dag.py`. Bellow is graph view image of the DAG:
-![DAG_image](./dag_graph_view.png "DAG graph view")
+![DAG_image](./images/dag_graph_view.png "DAG graph view")
 
 ### Operators
 There are five operators in the data pipelines that will create tables, stage the data, transform the data, and run checks on data quality. These operators are defined in `plugins/operators`.
